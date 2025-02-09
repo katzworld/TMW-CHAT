@@ -1,8 +1,23 @@
 {
-  "name": "websocket-terminal-chat",
-  "private": true,
-  "version": "0.0.0",
+  "name": "tmw-chat",
+  "version": "1.0.0",
+  "description": "A retro-style terminal chat with Web3 integration",
+  "private": false,
   "type": "module",
+  "author": "katzworld",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katzworld/TMW-CHAT.git"
+  },
+  "keywords": [
+    "react",
+    "websocket",
+    "chat",
+    "terminal",
+    "web3",
+    "ens"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
