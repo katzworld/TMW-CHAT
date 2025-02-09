@@ -1,0 +1,315 @@
+body {
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.terminal {
+  width: 80%;
+  /* default for desktop */
+  margin: 1rem auto;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  border-radius: 8px;
+  background: #000;
+  color: #00ff00;
+  font-family: monospace;
+  padding: 20px;
+  height: 90vh;
+  /* adjusted from 80vh */
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.leds {
+  display: flex;
+  gap: 5px;
+}
+
+.led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+.led.green {
+  background: #00ff00;
+}
+
+.led.red {
+  background: #ff0000;
+}
+
+.led.blue {
+  background: #0000ff;
+}
+
+.led.gray {
+  background: #555;
+}
+
+/* Add the blink keyframes animation */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blinkRed {
+  0% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes blinkBlue {
+  0% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+/* Add a new class for the blinking state */
+.led.green.blink {
+  animation: blink 0.5s ease-in-out;
+}
+
+.led.red.blink {
+  animation: blinkRed 0.5s ease-in-out;
+}
+
+.led.blue.blink {
+  animation: blinkBlue 0.5s ease-in-out;
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #00ff00;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  /* Add custom scrollbar styles */
+  scrollbar-width: thin;
+  scrollbar-color: #00ff00 #000000;
+}
+
+/* For Webkit browsers (Chrome, Safari, etc.) */
+.chat-window::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+  border-radius: 4px;
+}
+
+.message {
+  margin-bottom: 5px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.message-desktop {
+  display: flex;
+  gap: 4px;
+  /* Reduced from 8px */
+  align-items: flex-start;
+}
+
+.message-mobile {
+  display: none;
+  gap: 5px;
+}
+
+.message.system {
+  color: #ff4444;
+  font-style: italic;
+}
+
+.message.system .sender {
+  color: #ff4444;
+}
+
+.timestamp {
+  color: #888;
+  font-size: 0.9em;
+  min-width: 140px;
+}
+
+.sender {
+  color: #00ffff;
+}
+
+.content {
+  flex: 1;
+}
+
+.input-area {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  padding: 5px;
+}
+
+button {
+  background: #00ff00;
+  color: #000;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.connection-status {
+  color: #ff0000;
+  margin-top: 10px;
+}
+
+/* Add to App.css */
+@media screen and (max-width: 768px) {
+  .terminal {
+    width: 100%;
+    /* full width on mobile */
+    height: 100vh;
+    /* full height on mobile */
+    margin: 0;
+    /* remove margins */
+    padding: 10px;
+    border-radius: 0;
+    /* remove rounded corners on mobile */
+  }
+
+  .header {
+    margin-bottom: 10px;
+    /* reduce header margin */
+  }
+
+  .chat-window {
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+
+  .message {
+    flex-direction: column;
+    gap: 2px;
+    padding: 5px 0;
+    border-bottom: 1px solid #00ff0033;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+
+  .message-desktop {
+    display: none;
+  }
+
+  .message-mobile {
+    display: flex;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+
+  .message:active {
+    background-color: rgba(0, 255, 0, 0.1);
+  }
+
+  .timestamp {
+    font-size: 0.8em;
+    display: none;
+  }
+
+  .input-area {
+    flex-direction: row;
+    /* changed from column to row */
+    gap: 5px;
+    align-items: center;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 16px;
+    flex: 1;
+  }
+
+  button {
+    padding: 8px 15px;
+    width: auto;
+    /* changed from 100% to auto */
+    min-width: 40px;
+    /* ensures reasonable minimum width */
+    height: 35px;
+    /* fixed height to match input */
+  }
+}
+
+/* Remove or modify the max-height media query since we want full height on mobile */
+@media screen and (max-height: 600px) {
+  .terminal {
+    height: 100vh;
+    /* always use full viewport height */
+  }
+}
+
+.network-switch {
+  margin-left: 10px;
+  padding: 2px 8px;
+  background: transparent;
+  color: #ff4444;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em;
+  text-decoration: underline;
+}
+
+.network-switch:hover {
+  color: #ff6666;
+}
+
+.wrong-network {
+  border-bottom: 1px solid #ff4444;
+  cursor: pointer;
+}
