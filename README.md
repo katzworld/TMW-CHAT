@@ -1,6 +1,8 @@
 # TMW-CHAT
 
 A retro-style terminal chat application with Web3 integration and real-time WebSocket communication.
+![image](https://github.com/user-attachments/assets/1b0adb62-3655-4e37-8732-3d90afd508b7)
+
 
 ## 🌟 Features
 
